@@ -1,0 +1,4 @@
+name: PlayerMangaer
+version: '${project.version}'
+main: me.dieal.playermangaer.PlayerMangaer
+api-version: 1.19
