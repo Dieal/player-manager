@@ -68,21 +68,13 @@ public class OnlinePlayersMenu {
 
     }
 
-    public static void openMenu (Player player, Inventory menu) {
-
-        if (player == null || menu == null) {
-            return;
-        }
-
-        player.openInventory(menu);
-
-    }
-
-    public static void openMenu (Player player) {
+    public static void openMenu (Player player, PlayerManager manager) {
 
         if (player == null) {
             return;
         }
+
+        player.openInventory(createMenu(player, manager));
 
     }
 

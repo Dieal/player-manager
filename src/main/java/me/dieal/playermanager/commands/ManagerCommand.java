@@ -1,6 +1,7 @@
 package me.dieal.playermanager.commands;
 
 import me.dieal.playermanager.manager.PlayerManager;
+import me.dieal.playermanager.manager.gui.MainMenu;
 import me.dieal.playermanager.manager.gui.OnlinePlayersMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -27,7 +28,7 @@ public class ManagerCommand implements CommandExecutor {
         }
 
         Player player = (Player) commandSender;
-        player.openInventory(OnlinePlayersMenu.createMenu(player, manager));
+        MainMenu.openMenu(player, manager);
 
         return true;
     }
