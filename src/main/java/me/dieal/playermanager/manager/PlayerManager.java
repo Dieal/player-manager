@@ -1,4 +1,4 @@
-package me.dieal.playermangaer.manager;
+package me.dieal.playermanager.manager;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -15,7 +15,7 @@ public class PlayerManager {
         updateOnlinePlayers();
     }
 
-    private ArrayList<UUID> getOnlinePlayers () {
+    private ArrayList<UUID> generateOnlinePlayers () {
 
         ArrayList<UUID> users = new ArrayList<>() ;
 
@@ -28,7 +28,7 @@ public class PlayerManager {
     }
 
     // Getters
-    public ArrayList<UUID> players () {
+    public ArrayList<UUID> getOnlinePlayers () {
         return new ArrayList<UUID>(onlinePlayers);
     }
 
@@ -64,7 +64,7 @@ public class PlayerManager {
 
     // Updates player list
     public void updateOnlinePlayers () {
-        onlinePlayers = getOnlinePlayers();
+        onlinePlayers = generateOnlinePlayers();
     }
 
 }
