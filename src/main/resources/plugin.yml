@@ -1,4 +1,9 @@
-name: PlayerMangaer
+name: PlayerManager
 version: '${project.version}'
-main: me.dieal.playermangaer.PlayerMangaer
+main: me.dieal.playermanager.PlayerManagerPlugin
 api-version: 1.19
+commands:
+  manager:
+    usage: /<command>
+    description: manage online players (ban / mute / teleport)
+
