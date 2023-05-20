@@ -1,4 +1,4 @@
-package me.dieal.playermanager.manager.gui;
+package me.dieal.playermanager.manager.inventories;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import org.bukkit.Bukkit;
@@ -6,28 +6,44 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class OnlinePlayersMenu {
+public class OnlinePlayersMenu implements InventoryHolder {
 
-    public static Inventory createMenu (Player player, PlayerManager manager)  {
+    private Inventory inventory;
+    private Player player;
+    private PlayerManager manager;
+
+    public OnlinePlayersMenu (Player player, PlayerManager manager) {
+        this.player = player;
+        this.manager = manager;
+        this.inventory = createMenu();
+    }
+
+    @Override
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    private Inventory createMenu ()  {
 
         if (player == null) {
             return null;
         }
 
-        Inventory menu = Bukkit.createInventory(player, 54, ChatColor.RED + "Online Players");
-        menu.setContents(generateContents(menu.getSize(), manager));
+        Inventory menu = Bukkit.createInventory(this, 54, ChatColor.RED + "Online Players");
+        menu.setContents(generateContents(menu.getSize()));
 
         return menu;
 
     }
 
-    private static ItemStack[] generateContents (int size, PlayerManager manager) {
+    private ItemStack[] generateContents (int size) {
 
         ItemStack[] contents = new ItemStack[size];
         ArrayList<UUID> players = manager.getOnlinePlayers();
@@ -76,13 +92,13 @@ public class OnlinePlayersMenu {
 
     }
 
-    public static void openMenu (Player player, PlayerManager manager) {
+    public void openMenu () {
 
         if (player == null) {
             return;
         }
 
-        player.openInventory(createMenu(player, manager));
+        player.openInventory(inventory);
 
     }
 

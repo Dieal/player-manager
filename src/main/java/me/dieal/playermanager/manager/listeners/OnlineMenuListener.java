@@ -1,8 +1,8 @@
 package me.dieal.playermanager.manager.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
-import me.dieal.playermanager.manager.gui.OnlinePlayersMenu;
-import me.dieal.playermanager.manager.gui.PlayerInventory;
+import me.dieal.playermanager.manager.inventories.OnlinePlayersMenu;
+import me.dieal.playermanager.manager.inventories.PlayerInventory;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -25,7 +25,7 @@ public class OnlineMenuListener implements Listener {
     @EventHandler
     public void onMenuClick (InventoryClickEvent e) {
 
-        if (!e.getView().getTitle().equals(ChatColor.RED + "Online Players")) {
+        if (!(e.getInventory().getHolder() instanceof OnlinePlayersMenu)) {
             return;
         }
 
@@ -52,7 +52,7 @@ public class OnlineMenuListener implements Listener {
                 } else {
                     player.sendMessage(ChatColor.RED + "The player is not online");
                     player.playSound(player, Sound.ENTITY_VILLAGER_NO, 5, 3);
-                    OnlinePlayersMenu.openMenu(player, manager);
+                    new OnlinePlayersMenu(player, manager).openMenu();
                 }
 
                 break;

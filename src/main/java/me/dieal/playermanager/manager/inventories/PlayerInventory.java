@@ -1,4 +1,4 @@
-package me.dieal.playermanager.manager.gui;
+package me.dieal.playermanager.manager.inventories;
 
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 public class PlayerInventory implements InventoryHolder {

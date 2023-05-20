@@ -1,4 +1,4 @@
-package me.dieal.playermanager.manager.gui;
+package me.dieal.playermanager.manager.inventories;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import org.bukkit.Bukkit;
@@ -6,22 +6,31 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
-public class MainMenu {
+public class MainMenu implements InventoryHolder {
 
-    public static Inventory createMenu (Player player, PlayerManager manager)  {
+    private Inventory inventory;
+    private Player player;
 
-        if (player == null || manager == null) {
-            return null;
-        }
+    public MainMenu (Player player, PlayerManager manager) {
+        this.player = player;
+        this.inventory = createMenu();
+    }
 
-        Inventory menu = Bukkit.createInventory(player, 27, ChatColor.RED + "Management Menu");
+    @Override
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    private Inventory createMenu ()  {
+
+        Inventory menu = Bukkit.createInventory(this, 27, ChatColor.RED + "Management Menu");
 
         ItemStack onlinePlayers = new ItemStack(Material.PLAYER_HEAD);
         SkullMeta onlineMeta = (SkullMeta) onlinePlayers.getItemMeta();
@@ -41,14 +50,8 @@ public class MainMenu {
 
     }
 
-    public static void openMenu (Player player, PlayerManager manager) {
-
-        if (player == null) {
-            return;
-        }
-
-        player.openInventory(createMenu(player, manager));
-
+    public void openMenu () {
+        player.openInventory(inventory);
     }
 
 }

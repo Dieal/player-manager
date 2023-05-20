@@ -1,25 +1,18 @@
 package me.dieal.playermanager.manager.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
-import me.dieal.playermanager.manager.gui.OnlinePlayersMenu;
-import me.dieal.playermanager.manager.gui.PlayerInventory;
+import me.dieal.playermanager.manager.inventories.PlayerInventory;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.meta.SkullMeta;
-
-import java.util.UUID;
 
 public class PlayerMenuListener implements Listener {
 
-    private PlayerManager manager;
+    private final PlayerManager manager;
 
     public PlayerMenuListener (PlayerManager manager) {
         this.manager = manager;
