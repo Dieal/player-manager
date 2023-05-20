@@ -20,7 +20,7 @@ public class OnlinePlayersMenu {
             return null;
         }
 
-        Inventory menu = Bukkit.createInventory(player, 54, ChatColor.RED + "Management Menu");
+        Inventory menu = Bukkit.createInventory(player, 54, ChatColor.RED + "Online Players");
         menu.setContents(generateContents(menu.getSize(), manager));
 
         return menu;
@@ -52,9 +52,17 @@ public class OnlinePlayersMenu {
                     continue;
                 }
 
+                Player p = Bukkit.getPlayer(players.get(nItem));
+                ArrayList<String> lore = new ArrayList<>();
                 ItemStack head = new ItemStack(Material.PLAYER_HEAD);
                 SkullMeta meta = (SkullMeta) head.getItemMeta();
-                meta.setOwningPlayer(Bukkit.getPlayer(players.get(nItem)));
+
+                meta.setOwningPlayer(p);
+                meta.setDisplayName(ChatColor.WHITE + p.getName());
+                lore.add(ChatColor.BLUE + "Coordinates: " + ChatColor.WHITE + (int) p.getLocation().getX() + ", " + (int) p.getLocation().getY() + ", " + (int) p.getLocation().getZ());
+                lore.add("");
+                lore.add(ChatColor.YELLOW + "" + ChatColor.YELLOW + "Click here to manage the player");
+                meta.setLore(lore);
                 head.setItemMeta(meta);
 
                 int itemIndex = (row * 9) + column;

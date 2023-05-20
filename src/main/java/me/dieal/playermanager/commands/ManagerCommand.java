@@ -2,7 +2,6 @@ package me.dieal.playermanager.commands;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import me.dieal.playermanager.manager.gui.MainMenu;
-import me.dieal.playermanager.manager.gui.OnlinePlayersMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
