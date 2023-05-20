@@ -1,4 +1,4 @@
-package me.dieal.playermanager.listeners;
+package me.dieal.playermanager.manager.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import org.bukkit.event.EventHandler;
@@ -16,12 +16,12 @@ public class UpdaterListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin (PlayerJoinEvent e) {
-        manager.addPlayer(e.getPlayer());
+        manager.addOnlinePlayer(e.getPlayer());
     }
 
     @EventHandler
     public void onPlayerLeave (PlayerQuitEvent e) {
-        manager.removePlayer(e.getPlayer());
+        manager.removeOnlinePlayer(e.getPlayer());
     }
 
 }

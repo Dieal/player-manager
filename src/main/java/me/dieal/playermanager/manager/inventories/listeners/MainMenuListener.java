@@ -1,6 +1,7 @@
-package me.dieal.playermanager.manager.listeners;
+package me.dieal.playermanager.manager.inventories.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
+import me.dieal.playermanager.manager.inventories.BannedPlayersMenu;
 import me.dieal.playermanager.manager.inventories.MainMenu;
 import me.dieal.playermanager.manager.inventories.OnlinePlayersMenu;
 import org.bukkit.entity.Player;
@@ -31,13 +32,14 @@ public class MainMenuListener implements Listener {
         e.setCancelled(true);
         switch (e.getCurrentItem().getType()) {
             case PLAYER_HEAD:
-                OnlinePlayersMenu inventory = new OnlinePlayersMenu(player, manager);
+                OnlinePlayersMenu onlineMenu = new OnlinePlayersMenu(player, manager);
                 player.closeInventory();
-                inventory.openMenu();
+                onlineMenu.openMenu();
                 break;
             case BARRIER:
                 player.closeInventory();
-                // banned players menu
+                BannedPlayersMenu bannedMenu = new BannedPlayersMenu(player, manager);
+                bannedMenu.openMenu();
                 break;
         }
 

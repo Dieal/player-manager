@@ -1,4 +1,4 @@
-package me.dieal.playermanager.manager.listeners;
+package me.dieal.playermanager.manager.inventories.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import me.dieal.playermanager.manager.inventories.PlayerInventory;
@@ -21,12 +21,10 @@ public class PlayerMenuListener implements Listener {
     @EventHandler
     public void onMenuClick (InventoryClickEvent e) {
 
-        e.getWhoClicked().sendMessage("click");
         Inventory inventory = e.getInventory();
         if (!(e.getInventory().getHolder() instanceof PlayerInventory)) {
             return;
         }
-        e.getWhoClicked().sendMessage("that's my inventory!");
 
         if (e.getCurrentItem() == null) {
             return;

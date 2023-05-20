@@ -1,4 +1,4 @@
-package me.dieal.playermanager.manager.listeners;
+package me.dieal.playermanager.manager.inventories.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import me.dieal.playermanager.manager.inventories.OnlinePlayersMenu;
