@@ -2,6 +2,7 @@ package me.dieal.playermanager.manager.listeners;
 
 import me.dieal.playermanager.manager.PlayerManager;
 import me.dieal.playermanager.manager.gui.OnlinePlayersMenu;
+import me.dieal.playermanager.manager.gui.PlayerInventory;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -46,8 +47,8 @@ public class OnlineMenuListener implements Listener {
                 SkullMeta meta = (SkullMeta) e.getCurrentItem().getItemMeta();
                 UUID target = meta.getOwningPlayer().getUniqueId();
                 if (manager.isOnline(target)) {
-                    player.sendMessage("Player menu");
-                    // opens player management menu
+                    PlayerInventory inventory = new PlayerInventory(target);
+                    inventory.openInventory(player);
                 } else {
                     player.sendMessage(ChatColor.RED + "The player is not online");
                     player.playSound(player, Sound.ENTITY_VILLAGER_NO, 5, 3);
