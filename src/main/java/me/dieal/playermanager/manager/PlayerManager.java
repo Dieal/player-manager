@@ -32,6 +32,38 @@ public class PlayerManager {
         return new ArrayList<UUID>(onlinePlayers);
     }
 
+    public boolean isOnline (Player player) {
+
+        boolean result = false;
+
+        if (player == null) {
+            return result;
+        }
+
+        if (onlinePlayers.contains(player.getUniqueId())) {
+            result = true;
+        }
+
+        return result;
+
+    }
+
+    public boolean isOnline (UUID player) {
+
+        boolean result = false;
+
+        if (player == null) {
+            return result;
+        }
+
+        if (onlinePlayers.contains(player)) {
+            result = true;
+        }
+
+        return result;
+
+    }
+
     // Add player
     public void addPlayer (Player p) {
 
