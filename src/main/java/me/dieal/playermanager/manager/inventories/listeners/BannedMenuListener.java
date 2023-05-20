@@ -47,6 +47,11 @@ public class BannedMenuListener implements Listener {
             case PLAYER_HEAD:
                 player.closeInventory();
 
+                if (!player.hasPermission("manager.pardon")) {
+                    player.sendMessage(ChatColor.RED + "You do not have permission to pardon a banned player");
+                    return;
+                }
+
                 SkullMeta meta = (SkullMeta) e.getCurrentItem().getItemMeta();
                 OfflinePlayer target = meta.getOwningPlayer();
                 manager.pardonPlayer(target);

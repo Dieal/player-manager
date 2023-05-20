@@ -44,6 +44,11 @@ public class OnlineMenuListener implements Listener {
             case PLAYER_HEAD:
                 player.closeInventory();
 
+                if (!player.hasPermission("manager.manageplayer")) {
+                    player.sendMessage(ChatColor.RED + "You do not have permission to manage a player");
+                    return;
+                }
+
                 SkullMeta meta = (SkullMeta) e.getCurrentItem().getItemMeta();
                 UUID target = meta.getOwningPlayer().getUniqueId();
                 if (manager.isOnline(target)) {
